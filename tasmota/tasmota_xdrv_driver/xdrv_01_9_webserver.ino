@@ -1128,6 +1128,11 @@ void WebSliderColdWarm(void)
 
 void HandleRoot(void)
 {
+
+// AIS PAGE
+ais_main();
+return;
+
 #ifndef NO_CAPTIVE_PORTAL
   if (CaptivePortal()) { return; }  // If captive portal redirect instead of displaying the page.
 #endif  // NO_CAPTIVE_PORTAL
@@ -3810,4 +3815,19 @@ bool Xdrv01(uint32_t function)
   }
   return result;
 }
+
+// AIS include start
+#include "./ais_html/AIS_INDEX.h"
+// AIS include end
+
+void ais_main(){
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentSend_P(AIS_INDEX, TasmotaGlobal.version);
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+}
+
 #endif  // USE_WEBSERVER
