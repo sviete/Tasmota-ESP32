@@ -1130,6 +1130,7 @@ void HandleRoot(void)
 {
 
 // AIS PAGE
+AddLog(LOG_LEVEL_ERROR, "AIS MAIN");
 ais_main();
 return;
 
@@ -3820,10 +3821,13 @@ bool Xdrv01(uint32_t function)
 #include "./ais_html/AIS_INDEX.h"
 // AIS include end
 
+
 void ais_main(){
   Webserver->client().flush();
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
-  WSContentSend_P(AIS_INDEX, TasmotaGlobal.version);
+  // float c = CpuTemperature(); 
+  float c = 32.4; 
+  WSContentSend_P(AIS_INDEX, TasmotaGlobal.version, "32.4");
 
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
