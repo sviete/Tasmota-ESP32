@@ -62,7 +62,7 @@ const char AIS_INDEX[] PROGMEM =
   "</div>"
   "<div class=\"col\">"
   "<div class=\"card\">"
-  "<a href=\"in?\" style=\"color:#ff2104\">"
+  "<a href=\"ai?\" style=\"color:#ff2104\">"
   "<i class=\"fa fa-info fa-4x\" aria-hidden=\"true\"></i>"
   "<div class=\"card-body\">"
   "<h5 class=\"card-title\">Info</h5>"
