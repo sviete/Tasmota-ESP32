@@ -578,6 +578,8 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
 #ifndef FIRMWARE_MINIMAL_ONLY
   { "in", HTTP_ANY, HandleInformation },
 #endif  // Not FIRMWARE_MINIMAL_ONLY
+  // AIS start
+  { "ac", HTTP_GET, HandleAisConsole },
 };
 
 void WebServer_on(const char * prefix, void (*func)(void), uint8_t method = HTTP_ANY) {
@@ -1130,7 +1132,6 @@ void HandleRoot(void)
 {
 
 // AIS PAGE
-AddLog(LOG_LEVEL_ERROR, "AIS MAIN");
 ais_main();
 return;
 
@@ -3818,20 +3819,40 @@ bool Xdrv01(uint32_t function)
 }
 
 // AIS include start
+#include "./ais_html/AIS_HEAD.h"
+#include "./ais_html/AIS_END.h"
 #include "./ais_html/AIS_INDEX.h"
+#include "./ais_html/AIS_CONSOLE.h"
 // AIS include end
-
 
 void ais_main(){
   Webserver->client().flush();
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
   // float c = CpuTemperature(); 
   float c = 32.4; 
+  WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_INDEX, TasmotaGlobal.version, "32.4");
+  WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
   Webserver->client().stop();
+}
+
+
+void HandleAisConsole(void) {
+
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+
+  WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_CONSOLE);
+  WSContentSend_P(AIS_END);
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+
 }
 
 #endif  // USE_WEBSERVER
