@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en-EN" class="">
+<head>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<link rel="icon" href="https://ai-speaker.com/img/favicon.ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<title>AIS adapter</title>
+
+<style>
+  body {
+  background-color: #272727;
+  padding: 10px;
+ }
+
+button.btn {
+  margin-left:1em;
+  border-radius: 50% !important;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: none !important;
+  -webkit-transition: background-color 1s, color 1s, -webkit-transform 0.5s;
+  transition: background-color 1s, transform 0.5s;
+}
+
+button.btn:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: black;
+  -webkit-transform: translateX(-5px);
+  -webkit-box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
+  -moz-box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
+  box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
+}
+
+
+</style>
+<body >
+
+<button onclick="window.location.href='/'" class="btn btn-lg text-center"><span><i class="fa fa-arrow-left fa-3x"></i></span></button>
+<center>
+<div class="card" style="width: 100%;max-width: 800px;margin-top: 2em;">
+ 
+  <fieldset>
+    <legend><b>&nbsp;MQTT parameters&nbsp;</b></legend>
+    <form method="get" action="am">
+
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-server" aria-hidden="true"></i> &nbsp; Host</span>
+        <input type="text" placeholder="Username" id="mh" placeholder="" value="192.168.0.25" name="mh">
+      </div>
+
+      <p><b>Port</b> (1883)<br><input id="ml" placeholder="1883" value="1883" name="ml"></p>
+      
+      <p><b>User</b> (DVES_USER)<br><input id="mu" placeholder="DVES_USER" value="ais" name="mu"></p>
+      <p><label><b>Password</b></label><br><input id="mp" type="password" minlength="5" placeholder="Password" value="****" name="mp"></p>
+
+      <p><b>Client</b> (DVES_86EB40)<br><input id="mc" placeholder="DVES_%06X" value="dom_%06X" name="mc"></p>
+      <p><b>Topic</b> = %topic% (tasmota_86EB40)<br><input id="mt" placeholder="tasmota_%06X" value="dom_s20_%06X" name="mt"></p>
+      <p><b>Full Topic</b> (%prefix%/%topic%/)<br><input id="mf" placeholder="%prefix%/%topic%/" value="%topic%/%prefix%/" name="mf"></p>
+    
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <butto nname="save" type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+
+</div>
+</center>
+</body>
+</html>

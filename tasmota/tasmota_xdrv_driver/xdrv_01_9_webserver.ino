@@ -581,6 +581,7 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   // AIS start
   { "ac", HTTP_GET, HandleAisConsole },
   { "ai", HTTP_GET, HandleAisInfo },
+  { "am", HTTP_GET, HandleAisMqtt },
 };
 
 void WebServer_on(const char * prefix, void (*func)(void), uint8_t method = HTTP_ANY) {
@@ -3877,5 +3878,49 @@ void HandleAisInfo(void) {
   Webserver->client().stop();
 
 }
+
+void HandleAisMqtt(void) {
+
+    
+  if (Webserver->hasArg(F("save"))) {
+    MqttSaveSettings();
+    WebRestart(1);
+    return;
+  }
+
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+
+  WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
+                  ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
+
+
+  // 
+
+  char str[TOPSZ];
+
+  WSContentStart_P(PSTR(D_CONFIGURE_MQTT));
+  WSContentSendStyle();
+  
+  // WSContentSend_P(HTTP_FORM_MQTT1,
+  //   SettingsText(SET_MQTT_HOST),
+  //   Settings->mqtt_port,
+  //   Format(str, PSTR(MQTT_CLIENT_ID), sizeof(str)), PSTR(MQTT_CLIENT_ID), SettingsText(SET_MQTT_CLIENT));
+  
+  // WSContentSend_P(HTTP_FORM_MQTT2,
+  //   (!strlen(SettingsText(SET_MQTT_USER))) ? "0" : SettingsText(SET_MQTT_USER),
+  //   Format(str, PSTR(MQTT_TOPIC), sizeof(str)), PSTR(MQTT_TOPIC), SettingsText(SET_MQTT_TOPIC),
+  //   PSTR(MQTT_FULLTOPIC), PSTR(MQTT_FULLTOPIC), SettingsText(SET_MQTT_FULLTOPIC));
+  
+
+  WSContentSend_P(AIS_END);
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+
+}
+
 
 #endif  // USE_WEBSERVER
