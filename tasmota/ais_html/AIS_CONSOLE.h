@@ -88,7 +88,7 @@ const char AIS_CONSOLE[] PROGMEM =
 "  <div class=\"fakeButtons fakeZoom\"></div>"
 "</div>"
 "<div class=\"fakeScreen\">"
-"  <textarea readonly=\"\" id=\"t1\" wrap=\"off\" name=\"t1\" style=\"width: 100%%;background-color:#151515;border:0px;height:500px;color:#CDEE69;color: #c6e566;font-family: monospace;\"></textarea>"
+"  <textarea readonly=\"\" id=\"t1\" wrap=\"off\" name=\"t1\" style=\"width: 100%%;background-color:#151515;border:0px;height:500px;color:##afe50c;font-family: monospace;\"></textarea>"
 "  <form method=\"get\" onsubmit=\"return l(1);\"><br>"
 "  <div class=\"input-group input-group-lg\">"
 "      <span class=\"input-group-text\" id=\"inputGroup-sizing-lg\"><i class=\"fa fa-terminal\" aria-hidden=\"true\"></i></span>"

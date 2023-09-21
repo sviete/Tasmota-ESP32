@@ -33,39 +33,57 @@ button.btn:hover {
   box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
 }
 
-
 </style>
 <body >
 
 <button onclick="window.location.href='/'" class="btn btn-lg text-center"><span><i class="fa fa-arrow-left fa-3x"></i></span></button>
 <center>
-<div class="card" style="width: 100%;max-width: 800px;margin-top: 2em;">
- 
-  <fieldset>
-    <legend><b>&nbsp;MQTT parameters&nbsp;</b></legend>
-    <form method="get" action="am">
+<div class="card" style="width: 100%;max-width: 600px;margin-top: 2em;">
+  <h2 style="margin-top: 1em;">MQTT parameters</h2>
+  <form style="text-align: left;padding: 2em;" method="get" action="am">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">MQTT host</label>
+      <input type="text" class="form-control" placeholder="Username" id="mh" placeholder="" value="%s" name="mh">
+    </div>
 
-      <div class="input-group flex-nowrap">
-        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-server" aria-hidden="true"></i> &nbsp; Host</span>
-        <input type="text" placeholder="Username" id="mh" placeholder="" value="192.168.0.25" name="mh">
-      </div>
+    <input type="number" class="form-control" id="ml" placeholder="1883" value="%s" name="ml">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">MQTT port</label>
+      <input type="number" class="form-control" id="ml" placeholder="1883" value="%s" name="ml">
+    </div>
 
-      <p><b>Port</b> (1883)<br><input id="ml" placeholder="1883" value="1883" name="ml"></p>
-      
-      <p><b>User</b> (DVES_USER)<br><input id="mu" placeholder="DVES_USER" value="ais" name="mu"></p>
-      <p><label><b>Password</b></label><br><input id="mp" type="password" minlength="5" placeholder="Password" value="****" name="mp"></p>
+    <div class="mb-3">
+      <label for="mu" class="form-label">MQTT User</label>
+      <input type="text" class="form-control" id="mu" placeholder="MQTT user" value="%s" name="mu">
+    </div>
 
-      <p><b>Client</b> (DVES_86EB40)<br><input id="mc" placeholder="DVES_%06X" value="dom_%06X" name="mc"></p>
-      <p><b>Topic</b> = %topic% (tasmota_86EB40)<br><input id="mt" placeholder="tasmota_%06X" value="dom_s20_%06X" name="mt"></p>
-      <p><b>Full Topic</b> (%prefix%/%topic%/)<br><input id="mf" placeholder="%prefix%/%topic%/" value="%topic%/%prefix%/" name="mf"></p>
+    <div class="mb-3">
+      <label for="mp" class="form-label">MQTT Password</label>
+      <input type="password" class="form-control" id="mp" minlength="5" placeholder="Password" value="****" name="mp">
+    </div>
     
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <butto nname="save" type="submit" class="btn btn-primary">Save</button>
-        </div>
-      </div>
-    </form>
-  </fieldset>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="mc-sm">MQTT Client</span>
+      <input disabled id="mc" value="%s" name="mc" type="text" class="form-control">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">MQTT topic</span>
+      <input disabled id="mt" value="%s" name="mt" type="text" class="form-control">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">MQTT Full Topic</span>
+      <input disabled id="mf" value="%s" name="mf" type="text" class="form-control">
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-lg btn-primary" name="save" type="submit" class="button bgrn">Save</button>
+    </div>
+
+    
+
+  </form>      
 
 </div>
 </center>
