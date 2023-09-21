@@ -582,6 +582,9 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   { "ac", HTTP_GET, HandleAisConsole },
   { "ai", HTTP_GET, HandleAisInfo },
   { "am", HTTP_GET, HandleAisMqtt },
+  { "ab", HTTP_GET, HandleAisBlutooth },
+  { "ah", HTTP_GET, HandleAisHomeAssistant },
+  { "az", HTTP_GET, HandleAisZigbee2Mqtt },
 };
 
 void WebServer_on(const char * prefix, void (*func)(void), uint8_t method = HTTP_ANY) {
@@ -3827,6 +3830,7 @@ bool Xdrv01(uint32_t function)
 #include "./ais_html/AIS_CONSOLE.h"
 #include "./ais_html/AIS_ABOUT.h"
 #include "./ais_html/AIS_MQTT.h"
+#include "./ais_html/AIS_INFO.h"
 
 // AIS include end
 
@@ -3837,14 +3841,13 @@ void AisWebRestart(){
     Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
     WSContentSend_P(AIS_HEAD);
-    WSContentSend_P("<script>setTimeout(function() {location.href = '.';}, 10000);</script>");
-    WSContentSend_P("<body>");
-    WSContentSend_P("<p>OK</p>");
+    WSContentSend_P(AIS_INFO, 7000);
     WSContentSend_P(AIS_END);
 
     Web.chunk_buffer = "";
     Webserver->sendContent("", 0);
     Webserver->client().stop();
+
     TasmotaGlobal.restart_flag = 2;
 }
 
@@ -3920,6 +3923,55 @@ void HandleAisMqtt(void) {
                 SettingsText(SET_MQTT_FULLTOPIC)
   );
 
+  WSContentSend_P(AIS_END);
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+
+}
+
+
+void HandleAisBlutooth(void) {
+
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+
+  WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
+                  ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
+  WSContentSend_P(AIS_END);
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+
+}
+
+void HandleAisHomeAssistant(void) {
+
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+
+  WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
+                  ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
+  WSContentSend_P(AIS_END);
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+
+}
+
+void HandleAisZigbee2Mqtt(void) {
+
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+
+  WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
+                  ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
