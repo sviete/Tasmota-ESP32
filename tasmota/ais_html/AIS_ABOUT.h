@@ -40,7 +40,7 @@ const char AIS_ABOUT[] PROGMEM =
 "<body>"
 "<button onclick=\"window.location.href='/'\" class=\"btn btn-lg text-center\"><span class=\"mdi mdi-arrow-left\" style=\"font-size: large;\"></span></button>"
 "<center>"
-"<div class=\"card\" style=\"width: 100%%;max-width: 800px;margin-top: 2em;\">"
+"<div class=\"card\" style=\"width: 100%%;max-width: 600px;margin-top: 2em;\">"
 "  <div class=\"container-fluid\">"
 "    <div class=\"row\">"
 "      <div class=\"col-sm-8 align-self-center\">"

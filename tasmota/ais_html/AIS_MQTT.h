@@ -26,7 +26,7 @@ const char AIS_MQTT[] PROGMEM =
 "<body >"
 "<button onclick=\"window.location.href='/'\" class=\"btn-back btn btn-lg text-center\"><span class=\"mdi mdi-arrow-left\" style=\"font-size: large;\"></span></button>"
 "<center>"
-"<div class=\"card\" style=\"width: 100%;max-width: 800px;margin-top: 2em;\">"
+"<div class=\"card\" style=\"width: 100%;max-width: 600px;margin-top: 2em;\">"
 "  <h2 style=\"margin-top: 1em;\">MQTT parameters</h2>"
 "  <form style=\"text-align: left;padding: 2em;\" method=\"get\" action=\"am\">"
 "    <div class=\"mb-3\">"

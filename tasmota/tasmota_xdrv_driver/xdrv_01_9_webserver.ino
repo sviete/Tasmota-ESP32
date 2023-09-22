@@ -3937,8 +3937,26 @@ void HandleAisMqtt(void) {
 
 void HandleAisBlutooth(void) {
 
+    if (Webserver->hasArg("save")) {
+    AddLog(LOG_LEVEL_DEBUG, PSTR("BLE: SETTINGS SAVE"));
+    Settings->flag5.mi32_enable = Webserver->hasArg("e0");  //
+    BLEScanActiveMode = (Webserver->hasArg("e1")?1:0);  //
+
+    SettingsSaveAll();
+    HandleConfiguration();
+    return;
+  }
+
   Webserver->client().flush();
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+
+  //
+  WSContentSend_P(HTTP_FORM_BLE,
+    (Settings->flag5.mi32_enable) ? " checked" : "",
+    (BLEScanActiveMode) ? " checked" : ""
+    );
+  WSContentSend_P(HTTP_FORM_END);
+  
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
