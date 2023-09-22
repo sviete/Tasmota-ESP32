@@ -39,44 +39,15 @@ button.btn-back:hover {
 <button onclick="window.location.href='ais_index.html'" class="btn btn-back btn-lg text-center"><span><span class="mdi mdi-arrow-left" style="font-size: large;"></span></span></button>
 <center>
 <div class="card" style="width: 100%;max-width: 600px;margin-top: 2em;">
-  <h2 style="margin-top: 1em;">MQTT parameters</h2>
+  <h2 style="margin-top: 1em;">Upgrade</h2>
+  <span class="mdi mdi-update" style="font-size: 7em; color:#5b0566"></span>
   <form style="text-align: left;padding: 2em;" method="get" action="ais_info.html">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">MQTT host</label>
-      <input type="text" class="form-control" placeholder="Username" id="mh" placeholder="" value="%s" name="mh">
-    </div>
-
-    <input type="number" class="form-control" id="ml" placeholder="1883" value="%s" name="ml">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">MQTT port</label>
-      <input type="number" class="form-control" id="ml" placeholder="1883" value="%s" name="ml">
-    </div>
-
-    <div class="mb-3">
-      <label for="mu" class="form-label">MQTT User</label>
-      <input type="text" class="form-control" id="mu" placeholder="MQTT user" value="%s" name="mu">
-    </div>
-
-    <div class="mb-3">
-      <label for="mp" class="form-label">MQTT Password</label>
-      <input type="password" class="form-control" id="mp" minlength="5" placeholder="Password" value="****" name="mp">
-    </div>
     
-    <div class="input-group input-group-sm mb-3">
-      <span class="input-group-text" id="mc-sm">MQTT Client</span>
-      <input disabled id="mc" value="%s" name="mc" type="text" class="form-control">
+    <div>
+      <label for="formFileLg" class="form-label">Upload the upgrade file and click save</label>
+      <input class="form-control form-control-lg" id="formFileLg" type="file">
     </div>
-
-    <div class="input-group input-group-sm mb-3">
-      <span class="input-group-text" id="inputGroup-sizing-sm">MQTT topic</span>
-      <input disabled id="mt" value="%s" name="mt" type="text" class="form-control">
-    </div>
-
-    <div class="input-group input-group-sm mb-3">
-      <span class="input-group-text" id="inputGroup-sizing-sm">MQTT Full Topic</span>
-      <input disabled id="mf" value="%s" name="mf" type="text" class="form-control">
-    </div>
-
+    <br/><br/>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button class="btn btn-lg btn-primary" name="save" type="submit" class="button bgrn">Save</button>
     </div>
