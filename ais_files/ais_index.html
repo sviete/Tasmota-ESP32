@@ -13,9 +13,9 @@
 <div class="card" style="width: 100%;max-width: 800px;">
 <img class="card-img-top" src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais-smart-home.jpeg" alt="Card image cap">
 <div class="card-img-overlay">
-<h5 class="card-title" style="text-align:left;color:black"><i class="fa fa-github" aria-hidden="true"></i> version: %s</h5>
-<h5 class="card-title" style="text-align:left;color:black"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> temp: %s °C</h5>
+<h5 class="card-title" style="text-align:left;color:black"><span class="mdi mdi-thermometer"></span> %s °C</h5>
 </div>
+
 <div class="card-body" style="margin-top:2em;">
 <div class="row row-cols-1 row-cols-md-2 g-4">
 
@@ -73,28 +73,6 @@
 </a>
 </div>
 </div>
-    
-<div class="col">
-<div class="card">
-<a href="ais_about.html" style="color:#1b840a">
-<span class="mdi mdi-information-outline" style="font-size: 4em;"></span>
-<div class="card-body">
-<h5 class="card-title">Info</h5>
-</div>
-</a>
-</div>
-</div>
-
-<div class="col">
-<div class="card">
-<a href="#" style="color:#841c0a">
-<span class="mdi mdi-tools" style="font-size: 4em;"></span>
-<div class="card-body">
-<h5 class="card-title">Tools</h5>
-</div>
-</a>
-</div>
-</div>
 
 <div class="col">
 <div class="card">
@@ -106,10 +84,16 @@
 </a>
 </div>
 </div>
+</div>
+</div>
 
+<div style="text-align: right; margin-right: 2em; z-index: 999999;">
+<a href="ais_about.html">
+    <span class="mdi mdi-memory" style="font-size: 2em;"></span> 
+    <span style="line-height: 2em; vertical-align: super;">AIS version %s</span>
+</a>
 </div>
-</div>
-</div>
+
 </center>
 </body>
 </html>

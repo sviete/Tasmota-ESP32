@@ -585,6 +585,7 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   { "ab", HTTP_GET, HandleAisBlutooth },
   { "ah", HTTP_GET, HandleAisHomeAssistant },
   { "az", HTTP_GET, HandleAisZigbee2Mqtt },
+  { "au", HTTP_GET, HandleAisUpdate },
 };
 
 void WebServer_on(const char * prefix, void (*func)(void), uint8_t method = HTTP_ANY) {
@@ -3831,6 +3832,7 @@ bool Xdrv01(uint32_t function)
 #include "./ais_html/AIS_ABOUT.h"
 #include "./ais_html/AIS_MQTT.h"
 #include "./ais_html/AIS_INFO.h"
+#include "./ais_html/AIS_HA.h"
 
 // AIS include end
 
@@ -3861,7 +3863,7 @@ void ais_main(){
   #endif  // ESP32
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_INDEX, TasmotaGlobal.version, c);
+  WSContentSend_P(AIS_INDEX, TasmotaGlobal.version, TasmotaGlobal.version);
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
@@ -3954,6 +3956,21 @@ void HandleAisHomeAssistant(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_HA, "192.168.0.1");
+  WSContentSend_P(AIS_END);
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+
+}
+
+void HandleAisZigbee2Mqtt(void) {
+
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+
+  WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
                   ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
   WSContentSend_P(AIS_END);
@@ -3964,7 +3981,8 @@ void HandleAisHomeAssistant(void) {
 
 }
 
-void HandleAisZigbee2Mqtt(void) {
+
+void HandleAisUpdate(void) {
 
   Webserver->client().flush();
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
