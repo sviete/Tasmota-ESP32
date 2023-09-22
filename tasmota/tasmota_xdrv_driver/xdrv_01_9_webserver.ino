@@ -3833,6 +3833,7 @@ bool Xdrv01(uint32_t function)
 #include "./ais_html/AIS_MQTT.h"
 #include "./ais_html/AIS_INFO.h"
 #include "./ais_html/AIS_HA.h"
+#include "./ais_html/AIS_Z2M.h"
 
 // AIS include end
 
@@ -3971,8 +3972,7 @@ void HandleAisZigbee2Mqtt(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
-                  ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
+  WSContentSend_P(AIS_Z2M, "192.168.0.1");
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";

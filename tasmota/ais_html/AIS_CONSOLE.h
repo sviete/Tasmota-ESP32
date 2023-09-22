@@ -91,7 +91,7 @@ const char AIS_CONSOLE[] PROGMEM =
 "  <textarea readonly=\"\" id=\"t1\" wrap=\"off\" name=\"t1\" style=\"width: 100%%;background-color:#151515;border:0px;height:500px;color:#afe50c;font-family: monospace;\"></textarea>"
 "  <form method=\"get\" onsubmit=\"return l(1);\"><br>"
 "  <div class=\"input-group input-group-lg\">"
-"      <span class=\"input-group-text\" id=\"inputGroup-sizing-lg\"><i class=\"fa fa-terminal\" aria-hidden=\"true\"></i></span>"
+"      <span class=\"input-group-text\" id=\"inputGroup-sizing-lg\"><span style=\"color: black;\" class=\"mdi mdi-console-line\"></span></span>"
 "      <input type=\"text\" class=\"form-control\" id=\"c1\" placeholder=\"Enter command\" autofocus=\"\" name=\"c1\">"
 "    </div>"
 "  </form>"
