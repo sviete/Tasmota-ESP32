@@ -255,7 +255,8 @@ const char HTTP_HEAD_STYLE3[] PROGMEM =
   "<div style='text-align:center;color:#%06x;'><h3>" D_MINIMAL_FIRMWARE_PLEASE_UPGRADE "</h3></div>"  // COLOR_TEXT_WARNING
 #endif  // FIRMWARE_SAFEBOOT
 #endif  // FIRMWARE_MINIMAL
-  "<div style='text-align:center;color:#%06x;'><noscript>" D_NOSCRIPT "<br></noscript>" // COLOR_TITLE
+// AIS start
+  "<div style='text-align:center;color:#%06x;'><noscript>To use AIS adapter, enable JavaScript <br></noscript>" // COLOR_TITLE
 /*
 #ifdef LANGUAGE_MODULE_NAME
   "<h3>" D_MODULE " %s</h3>"
@@ -263,8 +264,9 @@ const char HTTP_HEAD_STYLE3[] PROGMEM =
   "<h3>%s " D_MODULE "</h3>"
 #endif
 */
-  "<h3>%s</h3>"    // Module name
-  "<h2>%s</h2>";   // Device name
+  "<h3>AIS</h3>"    // Module name
+  "<h2>adapter</h2>";   // Device name
+// AIS end
 
 const char HTTP_MSG_SLIDER_GRADIENT[] PROGMEM =
   "<div id='%s' class='r' style='background-image:linear-gradient(to right,%s,%s);'>"
@@ -408,7 +410,7 @@ const char HTTP_COUNTER[] PROGMEM =
   "<br><div id='t' style='text-align:center;'></div>";
 
 const char HTTP_END[] PROGMEM =
-  "<div style='text-align:right;font-size:11px;'><hr/><a href='https://bit.ly/tasmota' target='_blank' style='color:#aaa;'>Tasmota %s " D_BY " Theo Arends</a></div>"
+  "<div style='text-align:right;font-size:11px;'><hr/><a href='https://ai-speaker.com' target='_blank' style='color:#aaa;'>AIS adapter %s " D_BY " AI-Speaker</a></div>"
   "</div>"
   "</body>"
   "</html>";
@@ -582,7 +584,6 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   { "ac", HTTP_GET, HandleAisConsole },
   { "ai", HTTP_GET, HandleAisInfo },
   { "am", HTTP_GET, HandleAisMqtt },
-  { "ab", HTTP_GET, HandleAisBlutooth },
   { "ah", HTTP_GET, HandleAisHomeAssistant },
   { "az", HTTP_GET, HandleAisZigbee2Mqtt },
   { "au", HTTP_GET, HandleAisUpdate },
@@ -2627,7 +2628,6 @@ void HandleUpgradeFirmware(void) {
   if (!HttpCheckPriviledgedAccess()) { return; }
 
   AddLog(LOG_LEVEL_DEBUG, PSTR(D_LOG_HTTP D_FIRMWARE_UPGRADE));
-
   WSContentStart_P(PSTR(D_FIRMWARE_UPGRADE));
   WSContentSendStyle();
   WSContentSend_P(HTTP_FORM_UPG, SettingsText(SET_OTAURL));
@@ -3825,8 +3825,6 @@ bool Xdrv01(uint32_t function)
 }
 
 // AIS include start
-#include "./ais_html/AIS_HEAD.h"
-#include "./ais_html/AIS_END.h"
 #include "./ais_html/AIS_INDEX.h"
 #include "./ais_html/AIS_CONSOLE.h"
 #include "./ais_html/AIS_ABOUT.h"
@@ -3834,6 +3832,10 @@ bool Xdrv01(uint32_t function)
 #include "./ais_html/AIS_INFO.h"
 #include "./ais_html/AIS_HA.h"
 #include "./ais_html/AIS_Z2M.h"
+#include "./ais_html/AIS_HEAD.h"
+#include "./ais_html/AIS_END.h"
+#include "./ais_html/AIS_STYLE.h"
+#include "./ais_html/AIS_UPDATE.h"
 
 // AIS include end
 
@@ -3894,6 +3896,9 @@ void HandleAisInfo(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
+  WSContentSend_P("<style>.container-fluid {padding: 60px 50px;} .bg-grey {background-color: #f6f6f6;}.logo {font-size: 200px;}");
+  WSContentSend_P("@media screen and (max-width: 768px) {.col-sm-4 {text-align: center;margin: 25px 0;}</style>");
+  WSContentSend_P(AIS_STYLE);
   WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
                   ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
   WSContentSend_P(AIS_END);
@@ -3917,6 +3922,9 @@ void HandleAisMqtt(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
+  WSContentSend_P("<script>var x=null,lt,to,tp,pc='';eb=s=>document.getElementById(s);qs=s=>document.querySelector(s);sp=i=>eb(i).type=(eb(i).type==='text'?'password':'text');wl=f=>window.addEventListener('load',f);function jd(){var t=0,i=document.querySelectorAll('input,button,textarea,select');while(i.length>=t){if(i[t]){i[t]['name']=(i[t].hasAttribute('id')&&(!i[t].hasAttribute('name')))?i[t]['id']:i[t]['name'];}t++;}}function sf(s){var t=0,i=document.querySelectorAll('.hf');while(i.length>=t){if(i[t]){i[t].style.display=s?'block':'none';}t++;}}wl(jd);</script>");
+  WSContentSend_P(AIS_STYLE);
+
   WSContentSend_P(AIS_MQTT,
                 SettingsText(SET_MQTT_HOST),
                 Settings->mqtt_port,
@@ -3931,42 +3939,6 @@ void HandleAisMqtt(void) {
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
   Webserver->client().stop();
-
-}
-
-
-void HandleAisBlutooth(void) {
-
-    if (Webserver->hasArg("save")) {
-    AddLog(LOG_LEVEL_DEBUG, PSTR("BLE: SETTINGS SAVE"));
-    Settings->flag5.mi32_enable = Webserver->hasArg("e0");  //
-    BLEScanActiveMode = (Webserver->hasArg("e1")?1:0);  //
-
-    SettingsSaveAll();
-    HandleConfiguration();
-    return;
-  }
-
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
-
-  //
-  WSContentSend_P(HTTP_FORM_BLE,
-    (Settings->flag5.mi32_enable) ? " checked" : "",
-    (BLEScanActiveMode) ? " checked" : ""
-    );
-  WSContentSend_P(HTTP_FORM_END);
-  
-
-  WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
-                  ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
-  WSContentSend_P(AIS_END);
-
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
-
 }
 
 void HandleAisHomeAssistant(void) {
@@ -3975,13 +3947,13 @@ void HandleAisHomeAssistant(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_STYLE);
   WSContentSend_P(AIS_HA, "192.168.0.1");
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
   Webserver->client().stop();
-
 }
 
 void HandleAisZigbee2Mqtt(void) {
@@ -3990,31 +3962,29 @@ void HandleAisZigbee2Mqtt(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_STYLE);
   WSContentSend_P(AIS_Z2M, "192.168.0.1");
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
   Webserver->client().stop();
-
 }
 
-
-void HandleAisUpdate(void) {
-
+void HandleAisUpdate(void){
   Webserver->client().flush();
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
-                  ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
+  WSContentSend_P(AIS_STYLE);
+  WSContentSend_P(AIS_UPDATE);
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
   Webserver->client().stop();
-
+  
+  Web.upload_file_type = UPL_TASMOTA;
 }
-
 
 #endif  // USE_WEBSERVER

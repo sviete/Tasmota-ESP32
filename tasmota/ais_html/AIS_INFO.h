@@ -39,6 +39,4 @@ const char AIS_INFO[] PROGMEM =
 "      </div>"
 "    </div>"
 "  </div>"
-"</div>"
-"</center>"
 ;

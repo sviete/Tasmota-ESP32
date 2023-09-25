@@ -81,6 +81,4 @@ const char AIS_INDEX[] PROGMEM =
   "</a>"
   "</div>"
   
-  "</div>"
-  "</center>"
 ;
