@@ -79,29 +79,8 @@ span {
   color: #fff;
   font-weight: bold;
 }
-
-button.btn {
-  margin-left:1em;
-  border-radius: 50% !important;
-  background-color: rgba(255, 255, 255, 0.08);
-  color: white;
-  border: none !important;
-  -webkit-transition: background-color 1s, color 1s, -webkit-transform 0.5s;
-  transition: background-color 1s, transform 0.5s;
-}
-
-button.btn:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  color: black;
-  -webkit-transform: translateX(-5px);
-  -webkit-box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
-  -moz-box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
-  box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
-}
 </style>
 <body >
-
-<button onclick="window.location.href='ais_index.html'" class="btn btn-lg text-center"><span><span class="mdi mdi-arrow-left" style="font-size: large;"></span></span></button>
 
 <div class=fakeMenu>
   <div class="fakeButtons fakeClose"></div>
@@ -116,7 +95,12 @@ button.btn:hover {
       <input type="text" class="form-control" id="c1" placeholder="Enter command" autofocus="" name="c1">
     </div>
   </form>
+  <br/><br/>
+      <center>
+        <button onclick="window.location.href='ais_index.html'" type="button" class="btn btn-primary btn-lg" style="width: 100%;">Main Menu</button>
+      </center>
 </div>
+
 
 </body>
 </html>

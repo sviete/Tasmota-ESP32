@@ -13,30 +13,9 @@
   background-color: #272727;
   padding: 10px;
  }
-
-button.btn-back {
-  margin-left:1em;
-  border-radius: 50% !important;
-  background-color: rgba(255, 255, 255, 0.08);
-  color: white;
-  border: none !important;
-  -webkit-transition: background-color 1s, color 1s, -webkit-transform 0.5s;
-  transition: background-color 1s, transform 0.5s;
-}
-
-button.btn-back:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  color: black;
-  -webkit-transform: translateX(-5px);
-  -webkit-box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
-  -moz-box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
-  box-shadow: 5px 0px 18px 0px rgba(105,105,105,0.8);
-}
-
 </style>
 <body >
 
-<button onclick="window.location.href='ais_index.html'" class="btn btn-back btn-lg text-center"><span><span class="mdi mdi-arrow-left" style="font-size: large;"></span></span></button>
 <center>
 <div class="card" style="width: 100%;max-width: 600px;margin-top: 2em;">
   <h2 style="margin-top: 1em;">Upgrade</h2>
@@ -47,11 +26,14 @@ button.btn-back:hover {
       <input class="form-control form-control-lg" id="formFileLg" type="file">
     </div>
     <br/><br/>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-lg btn-primary" name="save" type="submit" class="button bgrn">Save</button>
-    </div>
-  </form>     
 
+    <center>
+      <button class="btn btn-lg btn-primary" name="save" type="submit" class="button bgrn" style="width: 100%;">Save</button>
+      <br/><br/>
+      <button onclick="window.location.href='ais_index.html'" type="button" class="btn btn-primary btn-lg" style="width: 100%;">Main Menu</button>
+    </center>
+  </form>     
+  
 </div>
 </center>
 </body>

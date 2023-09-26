@@ -264,8 +264,8 @@ const char HTTP_HEAD_STYLE3[] PROGMEM =
   "<h3>%s " D_MODULE "</h3>"
 #endif
 */
-  "<h3>AIS</h3>"    // Module name
-  "<h2>adapter</h2>";   // Device name
+  "<h3>AIS adapter</h3>"    // Module name
+  "<h2></h2>";   // Device name
 // AIS end
 
 const char HTTP_MSG_SLIDER_GRADIENT[] PROGMEM =
@@ -581,7 +581,7 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   { "in", HTTP_ANY, HandleInformation },
 #endif  // Not FIRMWARE_MINIMAL_ONLY
   // AIS start
-  { "ac", HTTP_GET, HandleAisConsole },
+  { "at", HTTP_GET, HandleAisConsole },
   { "ai", HTTP_GET, HandleAisInfo },
   { "am", HTTP_GET, HandleAisMqtt },
   { "ah", HTTP_GET, HandleAisHomeAssistant },
@@ -3978,6 +3978,8 @@ void HandleAisUpdate(void){
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_STYLE);
   WSContentSend_P(AIS_UPDATE);
+
+  WSContentSpaceButton(BUTTON_MAIN);
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";

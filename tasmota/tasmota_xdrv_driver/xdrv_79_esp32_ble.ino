@@ -3511,7 +3511,10 @@ void HandleBleConfiguration(void)
     BLEScanActiveMode = (Webserver->hasArg("e1")?1:0);  //
 
     SettingsSaveAll();
-    HandleConfiguration();
+    // AIS start go to main menu
+    // HandleConfiguration();
+    HandleRoot();
+    // AIS stop
     return;
   }
 #ifdef BLE_ESP32_DEBUG
@@ -3555,8 +3558,11 @@ void HandleBleConfiguration(void)
       WSContentSend_P(HTTP_BLE_DEV_END);
     }
   }
-
-  WSContentSpaceButton(BUTTON_CONFIGURATION);
+  
+  // AIS start button BUTTON_MAIN
+  // WSContentSpaceButton(BUTTON_CONFIGURATION);
+  WSContentSpaceButton(BUTTON_MAIN);
+  // AIS stop
   WSContentStop();
 
 }
