@@ -52,7 +52,7 @@ const char AIS_INDEX[] PROGMEM =
 
   "<div class=\"col\">"
   "<div class=\"card\">"
-  "<a href=\"up?\" style=\"color:#5b0566\">"
+  "<a href=\"au?\" style=\"color:#5b0566\">"
   "<span class=\"mdi mdi-update\" style=\"font-size: 4em;\"></span>"
   "<div class=\"card-body\">"
   "<h5 class=\"card-title\">Upgrade</h5>"

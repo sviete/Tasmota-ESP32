@@ -586,7 +586,7 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   { "am", HTTP_GET, HandleAisMqtt },
   { "ah", HTTP_GET, HandleAisHomeAssistant },
   { "az", HTTP_GET, HandleAisZigbee2Mqtt },
-  { "au", HTTP_GET, HandleAisUpdate },
+  { "au", HTTP_GET, HandleAisUpgrade },
 };
 
 void WebServer_on(const char * prefix, void (*func)(void), uint8_t method = HTTP_ANY) {
@@ -3835,7 +3835,8 @@ bool Xdrv01(uint32_t function)
 #include "./ais_html/AIS_HEAD.h"
 #include "./ais_html/AIS_END.h"
 #include "./ais_html/AIS_STYLE.h"
-#include "./ais_html/AIS_UPDATE.h"
+#include "./ais_html/AIS_UPGRADE.h"
+#include "./ais_html/AIS_UPGRADE_32.h"
 
 // AIS include end
 
@@ -3971,21 +3972,29 @@ void HandleAisZigbee2Mqtt(void) {
   Webserver->client().stop();
 }
 
-void HandleAisUpdate(void){
+void HandleAisUpgrade(void){
   Webserver->client().flush();
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_STYLE);
-  WSContentSend_P(AIS_UPDATE);
 
-  WSContentSpaceButton(BUTTON_MAIN);
+#ifdef ESP32
+  if (EspSingleOtaPartition() && !EspRunningFactoryPartition()) {
+      WSContentSend_P(AIS_UPGRADE_32);
+  } else {
+     WSContentSend_P(AIS_UPGRADE);
+  }
+ #else
+    WSContentSend_P(AIS_UPGRADE);
+ #endif
+
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
   Webserver->client().stop();
-  
+
   Web.upload_file_type = UPL_TASMOTA;
 }
 
