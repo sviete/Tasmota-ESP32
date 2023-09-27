@@ -586,7 +586,7 @@ const WebServerDispatch_t WebServerDispatch[] PROGMEM = {
   { "am", HTTP_GET, HandleAisMqtt },
   { "ah", HTTP_GET, HandleAisHomeAssistant },
   { "az", HTTP_GET, HandleAisZigbee2Mqtt },
-  { "au", HTTP_GET, HandleAisUpgrade },
+  { "a1", HTTP_GET, HandleAisUpgrade },
 };
 
 void WebServer_on(const char * prefix, void (*func)(void), uint8_t method = HTTP_ANY) {
@@ -1141,6 +1141,7 @@ void HandleRoot(void)
 // AIS PAGE
 ais_main();
 return;
+//AIS PAGE 
 
 #ifndef NO_CAPTIVE_PORTAL
   if (CaptivePortal()) { return; }  // If captive portal redirect instead of displaying the page.

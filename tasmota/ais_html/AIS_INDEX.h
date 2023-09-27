@@ -52,7 +52,7 @@ const char AIS_INDEX[] PROGMEM =
 
   "<div class=\"col\">"
   "<div class=\"card\">"
-  "<a href=\"au?\" style=\"color:#5b0566\">"
+  "<a href=\"a1?\" style=\"color:#5b0566\">"
   "<span class=\"mdi mdi-update\" style=\"font-size: 4em;\"></span>"
   "<div class=\"card-body\">"
   "<h5 class=\"card-title\">Upgrade</h5>"
@@ -77,7 +77,7 @@ const char AIS_INDEX[] PROGMEM =
   "<div style=\"text-align: right; margin-right: 2em; z-index: 999999;\">"
   "<a href=\"ai?\" style=\"color: black;text-decoration: none;\">"
   "<span class=\"mdi mdi-memory\" style=\"font-size: 2em;\"></span>" 
-  "<span style=\"line-height: 2em; vertical-align: super;\">AIS version %s</span>"
+  "<span style=\"line-height: 2em; vertical-align: super;\">AIS version %s <a href=\"cn?\" style=\"color:black;text-decoration:none;\">&nbsp;&nbsp;.</a></span>"
   "</a>"
   "</div>"
   
