@@ -37,6 +37,7 @@ const char AIS_INFO[] PROGMEM =
 "      <div class=\"col-sm-4 align-self-center\">"
 "        <span class=\"mdi mdi-content-save\" style=\"font-size: 6em;\"></span>"
 "      </div>"
+"      <br/><br/><button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%;\">Main Menu</button>"
 "    </div>"
 "  </div>"
 ;

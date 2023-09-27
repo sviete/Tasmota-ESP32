@@ -29,8 +29,7 @@ const char AIS_MQTT[] PROGMEM =
 "      <span class=\"input-group-text\" id=\"inputGroup-sizing-sm\">MQTT Full Topic</span>"
 "      <input id=\"mf\" value=\"%s\" name=\"mf\" type=\"text\" class=\"form-control\">"
 "    </div>"
-"    <div class=\"d-grid gap-2 d-md-flex justify-content-md-end\">"
-"      <button class=\"btn btn-lg  btn-primary\" name=\"save\" type=\"submit\" class=\"button bgrn\">Save</button>"
-"    </div>"
+"      <button class=\"btn btn-lg  btn-primary\" name=\"save\" type=\"submit\" class=\"button bgrn\" style=\"width: 100%%;\">Save</button>"
+"      <br/><br/><button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%%;\">Main Menu</button>"
 "  </form>"    
 ;

@@ -28,4 +28,5 @@ const char AIS_ABOUT[] PROGMEM =
 "      </div>"
 "    </div>"
 "  </div>"
+"<button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%;\">Main Menu</button>"
 ;

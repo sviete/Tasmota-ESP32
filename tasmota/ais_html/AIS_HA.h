@@ -13,5 +13,6 @@ const char AIS_HA[] PROGMEM =
 "    <div class=\"card-body\">"
 "      <a href=\"https://ai-speaker.com/docs/ais_zigbee_index\" class=\"card-link\"><span class=\"mdi mdi-web-box\"></span>Documentation</a>"
 "      <a href=\"https://github.com/sviete/Tasmota-ESP32\" class=\"card-link\"><span class=\"mdi mdi-github\"></span>Source code</a>"
+"      <br/><br/><button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%%;\">Main Menu</button>"
 "    </div>"
 ;

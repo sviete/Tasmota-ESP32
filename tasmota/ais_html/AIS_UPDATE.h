@@ -13,5 +13,6 @@ const char AIS_UPDATE[] PROGMEM =
 "onclick=\"document.getElementById('f1').style.display='none';document.getElementById('f2')"
 ".style.display='block';this.form.action+=this.form['u2'].files[0].size;this.form.submit();\">Upgrade</button>"
 "    </div>"
+"      <br/><br/><button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%;\">Main Menu</button>"
 "  </form>"    
 ;

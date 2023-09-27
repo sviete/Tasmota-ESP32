@@ -8,7 +8,7 @@ const char AIS_INDEX[] PROGMEM =
   "</div>"
 
   "<div class=\"card-body\" style=\"margin-top:2em;\">"
-  "<div class=\"row row-cols-1 row-cols-md-2 g-4\">"
+  "<div class=\"row row-cols-2 row-cols-md-2 g-4\">"
   "<div class=\"col\">"
   "<div class=\"card\">"
   "<a href=\"ah?\" style=\"color:#18bbf2\">"
