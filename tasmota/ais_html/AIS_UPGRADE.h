@@ -1,4 +1,7 @@
 const char AIS_UPGRADE[] PROGMEM =
+"<body >"
+"<center>"  
+"  <div class=\"card\" style=\"width: 100%%;max-width: 600px;margin-top: 2em;\">"
 "  <h2 style=\"margin-top: 1em;\">Upgrade</h2>"
 "<span class=\"mdi mdi-update\" style=\"font-size: 7em; color:#5b0566\"></span>"
 "  <div id=\"f2\" style=\"display:none;text-align:center;\"><b>Upload started...</b></div>"
@@ -11,7 +14,7 @@ const char AIS_UPGRADE[] PROGMEM =
 "    <div class=\"d-grid gap-2 d-md-flex justify-content-md-end\">"
 "      <button class=\"btn btn-lg btn-primary\" name=\"save\" type=\"submit\" class=\"button bgrn\""
 "onclick=\"document.getElementById('f1').style.display='none';document.getElementById('f2')"
-".style.display='block';this.form.action+=this.form['u2'].files[0].size;this.form.submit();\">Upgrade</button>"
+".style.display='block';this.form.action+=this.form['u2'].files[0].size;this.form.submit();\" style=\"width: 100%%;\">Upgrade</button>"
 "    </div>"
 "      <br/><br/><button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%%;\">Main Menu</button>"
 "  </form>"    

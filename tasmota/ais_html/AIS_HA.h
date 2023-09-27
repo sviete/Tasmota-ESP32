@@ -1,4 +1,7 @@
 const char AIS_HA[] PROGMEM =
+"<body >"
+"<center>"  
+"  <div class=\"card\" style=\"width: 100%%;max-width: 600px;margin-top: 2em;\">"
 "    <span class=\"mdi mdi-home-assistant\" style=\"font-size: 7em; color: #18bbf2;\"></span>"
 "    <div class=\"card-body\">"
 "      <h5 class=\"card-title\">Connecting to Home Assistant with ZHA</h5>"

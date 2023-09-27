@@ -1,4 +1,7 @@
 const char AIS_MQTT[] PROGMEM =
+"<body >"
+"<center>"  
+"  <div class=\"card\" style=\"width: 100%%;max-width: 600px;margin-top: 2em;\">"
 "  <h2 style=\"margin-top: 1em;\">MQTT parameters</h2>"
 "  <form style=\"text-align: left;padding: 2em;\" method=\"get\" action=\"am\">"
 "    <div class=\"mb-3\">"

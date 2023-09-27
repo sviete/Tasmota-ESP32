@@ -3471,7 +3471,7 @@ const char HTTP_FORM_BLE[] PROGMEM =
 
 const char HTTP_BLE_DEV_STYLE[] PROGMEM = "th, td { padding-left:5px; }";
 const char HTTP_BLE_DEV_START[] PROGMEM =
-  "<fieldset><legend><b>&nbsp;" D_BLE_DEVICES "&nbsp;</b></legend><table>"
+  "<fieldset><legend><b>&nbsp;" D_BLE_DEVICES "&nbsp;</b></legend><table class=\"table\">"
   "<tr><th><label>mac(type)</label></th><th><label>alias</label></th><th><label>name</label></th><th><label>RSSI</label></th><th><label>Age(max)</label></th></tr>";
 const char HTTP_BLE_DEV[] PROGMEM =
   "<tr><td><label>%s(%d)</label></td><td><label>%s</label></td><td><label>%s</label></td><td><label>%d</label></td><td><label>%d(%d)</label></td></tr>";
@@ -3511,10 +3511,7 @@ void HandleBleConfiguration(void)
     BLEScanActiveMode = (Webserver->hasArg("e1")?1:0);  //
 
     SettingsSaveAll();
-    // AIS start go to main menu
-    // HandleConfiguration();
-    HandleRoot();
-    // AIS stop
+    HandleConfiguration();
     return;
   }
 #ifdef BLE_ESP32_DEBUG
@@ -3559,13 +3556,77 @@ void HandleBleConfiguration(void)
     }
   }
   
-  // AIS start button BUTTON_MAIN
-  // WSContentSpaceButton(BUTTON_CONFIGURATION);
-  WSContentSpaceButton(BUTTON_MAIN);
-  // AIS stop
+  WSContentSpaceButton(BUTTON_CONFIGURATION);
   WSContentStop();
 
 }
+
+// AIS START 
+#include "./ais_html/AIS_BT.h"
+void HandleAisBleConfiguration(void) {
+
+  AddLog(LOG_LEVEL_INFO, PSTR("BLE: HandleBleConfiguration"));
+  AddLog(LOG_LEVEL_INFO, PSTR(D_LOG_HTTP D_CONFIGURE_BLE));
+  char tmp[20];
+  WebGetArg("en", tmp, sizeof(tmp));
+  AddLog(LOG_LEVEL_INFO, PSTR("BLE: arg en is %s"), tmp);
+
+  if (Webserver->hasArg("save")) {
+    AddLog(LOG_LEVEL_INFO, PSTR("BLE: SETTINGS SAVE"));
+    Settings->flag5.mi32_enable = Webserver->hasArg("e0");  //
+    BLEScanActiveMode = (Webserver->hasArg("e1")?1:0);  //
+
+    SettingsSaveAll();
+    HandleRoot();
+    return;
+  }
+  AddLog(LOG_LEVEL_INFO, PSTR("BLE: !SAVE"));
+  char str[TOPSZ];
+
+  Webserver->client().flush();
+  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentSend_P(AIS_HEAD);
+  WSContentSend_P(AIS_BT,
+  (Settings->flag5.mi32_enable) ? " checked" : "",
+  (BLEScanActiveMode) ? " checked" : "");
+
+  {
+    //TasAutoMutex localmutex(&BLEOperationsRecursiveMutex, "BLEConf");
+    int number = seenDevices.size();
+    if (number){
+      WSContentSend_P(HTTP_BLE_DEV_START);
+      uint64_t now = esp_timer_get_time();
+      now = now/1000L;
+      now = now/1000L;
+      uint32_t nowS = (uint32_t)now;
+
+      for (int i = 0; i < number; i++){
+        BLE_ESP32::BLE_simple_device_t* dev = seenDevices[i];
+        char addr[20];
+        dump(addr, 20, dev->mac, 6);
+        uint8_t addrtype = dev->addrtype;
+        const char *alias = getAlias(dev->mac);
+        uint64_t lastseen = dev->lastseen/1000L;
+        lastseen = lastseen/1000L;
+        uint32_t lastseenS = (uint32_t) lastseen;
+        uint32_t ageS = nowS-lastseenS;
+
+        WSContentSend_P(HTTP_BLE_DEV, addr, addrtype, alias, dev->name, dev->RSSI, ageS, dev->maxAge);
+      }
+      WSContentSend_P(HTTP_BLE_DEV_END);
+    }
+  }
+  WSContentSend_P("<button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%%;\">Main Menu</button></form>");
+  WSContentSend_P(AIS_END);
+  WSContentSend_P("");
+
+  Web.chunk_buffer = "";
+  Webserver->sendContent("", 0);
+  Webserver->client().stop();
+
+}
+// AIS STOP
+
 #endif
 
 
@@ -3637,7 +3698,9 @@ bool Xdrv79(uint32_t function)
       WSContentSend_P(BLE_ESP32::HTTP_BTN_MENU_BLE);
       break;
     case FUNC_WEB_ADD_HANDLER:
-      WebServer_on(PSTR("/" WEB_HANDLE_BLE), BLE_ESP32::HandleBleConfiguration);
+      // AIS
+      // WebServer_on(PSTR("/" WEB_HANDLE_BLE), BLE_ESP32::HandleBleConfiguration);
+      WebServer_on(PSTR("/" WEB_HANDLE_BLE), BLE_ESP32::HandleAisBleConfiguration);
       break;
 #endif  // USE_WEBSERVER
     }

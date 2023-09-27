@@ -1,4 +1,7 @@
 const char AIS_Z2M[] PROGMEM =
+"<body >"
+"<center>"  
+"  <div class=\"card\" style=\"width: 100%%;max-width: 600px;margin-top: 2em;\">"
 "    <span class=\"mdi mdi-zigbee\" style=\"font-size: 7em; color: #EC0B43;\"></span>"
 "    <div class=\"card-body\">"
 "      <h5 class=\"card-title\">Connecting to Zigbee2MQTT      </h5>"

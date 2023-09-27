@@ -3,10 +3,6 @@ const char AIS_CONSOLE[] PROGMEM =
 "var x=null,lt,to,tp,pc='';eb=s=>document.getElementById(s);qs=s=>document.querySelector(s);sp=i=>eb(i).type=(eb(i).type==='text'?'password':'text');wl=f=>window.addEventListener('load',f);var sn=0,id=0,ft,ltm=2345;function l(p){var c,o='';clearTimeout(lt);clearTimeout(ft);t=eb('t1');if(p==1){c=eb('c1');o='&c1='+encodeURIComponent(c.value);c.value='';t.scrollTop=1e8;sn=t.scrollTop;}if(t.scrollTop>=sn){if(x!=null){x.abort();}x=new XMLHttpRequest();x.onreadystatechange=()=>{if(x.readyState==4&&x.status==200){var z,d;d=x.responseText.split(/}1/);id=d.shift();if(d.shift()==0){t.value='';}z=d.shift();if(z.length>0){t.value+=z;}t.scrollTop=1e8;sn=t.scrollTop;clearTimeout(ft);lt=setTimeout(l,ltm);}};x.open('GET','cs?c2='+id+o,true);x.send();ft=setTimeout(l,2e4);}else{lt=setTimeout(l,ltm);}return false;}wl(l);var hc=[],cn=0;function h(){eb('c1').addEventListener('keydown',e=>{var b=eb('c1'),c=e.keyCode;if(38==c||40==c){b.autocomplete='off';setTimeout(b=>{b.focus();b.setSelectionRange(1e9,1e9)},0,b)}38==c?(++cn>hc.length&&(cn=hc.length),b.value=hc[cn-1]||''):40==c?(0>--cn&&(cn=0),b.value=hc[cn-1]||''):13==c&&(hc.length>19&&hc.pop(),hc.unshift(b.value),cn=0)});}wl(h);function jd(){var t=0,i=document.querySelectorAll('input,button,textarea,select');while(i.length>=t){if(i[t]){i[t]['name']=(i[t].hasAttribute('id')&&(!i[t].hasAttribute('name')))?i[t]['id']:i[t]['name'];}t++;}}function sf(s){var t=0,i=document.querySelectorAll('.hf');while(i.length>=t){if(i[t]){i[t].style.display=s?'block':'none';}t++;}}wl(jd);"
 "</script>"  
 "<style>"
-"  body {"
-"  background-color: #272727;"
-"  padding: 10px;"
-"}"
 ".fakeButtons {"
 "  height: 10px;"
 "  width: 10px;"
@@ -77,6 +73,6 @@ const char AIS_CONSOLE[] PROGMEM =
 "      <input type=\"text\" class=\"form-control\" id=\"c1\" placeholder=\"Enter command\" autofocus=\"\" name=\"c1\">"
 "    </div>"
 "  </form>"
+"  <br/><br/><button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%%;\">Main Menu</button>"
 "  </div>"
-"<button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%%;\">Main Menu</button>"
 ;

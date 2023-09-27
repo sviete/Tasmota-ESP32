@@ -1,10 +1,6 @@
 const char AIS_INFO[] PROGMEM =
 "<script>setTimeout(function(){location.href='.';},%d);</script>"
 "<style>"
-"  body {"
-"  background-color: #272727;"
-"  padding: 10px;"
-" }"
 ".container-fluid {"
 "    padding: 60px 50px;"
 "  }"

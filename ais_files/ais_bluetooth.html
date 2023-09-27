@@ -14,27 +14,31 @@
   padding: 10px;
  }
 </style>
-<body >
 
-<button onclick="window.location.href='ais_index.html'" class="btn btn-back btn-lg text-center"><span><span class="mdi mdi-arrow-left" style="font-size: large;"></span></span></button>
+<style>div.form-check input.big-check-input{width:4em;height:2em;}</style>
+<body >
 <center>
 <div class="card" style="width: 100%;max-width: 600px;margin-top: 2em;">
   <h2 style="margin-top: 1em;">Bluetooth settings</h2>
   <span class="mdi mdi-bluetooth-settings" style="font-size: 7em; color:#3f51b5"></span>
 
   <form style="text-align: left;padding: 2em;" method="get" action="ais_index.html">
-    
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="flexSwitchCheckBluetooth" checked>
-      <label class="form-check-label" for="flexSwitchCheckChecked">Enable bloototh</label>
+      <input id="e0" name="e0" class="big-check-input form-check-input" type="checkbox" hecked="%s" >
+      <label class="form-check-label" for="e0" style="line-height: 2.5em;">&nbsp;Enable bloototh</label>
     </div>  
-
+    <br/>
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="flexSwitchCheckBluetoothScan" checked>
-      <label class="form-check-label" for="flexSwitchCheckChecked">Enable active scan (are not stored in config)</label>
+      <input id="e1" name="e1" class="big-check-input form-check-input" type="checkbox" checked="%s" >
+      <label class="form-check-label" for="e1" style="line-height: 2.5em;">&nbsp;Enable active scan (not stored in config)</label>
     </div>  
     <br/><br/>
-    <fieldset><legend><b>Visible devices</b></legend>
+    <button class="btn btn-lg btn-primary" name="save" type="submit" class="button bgrn"  style="width: 100%;">Save</button>  
+    <br/><br/>
+    
+    </form> 
+    <form style="text-align: left;padding: 2em;">
+      <fieldset><legend><b>Visible devices</b></legend>
     
       <table class="table">
         <thead>
@@ -52,11 +56,9 @@
       </table>
 
     </fieldset>
-
-    <button class="btn btn-lg btn-primary" name="save" type="submit" class="button bgrn"  style="width: 100%;">Save</button>  
     <br/>  <br/> 
     <button onclick="window.location.href='ais_index.html'" type="button" class="btn btn-primary btn-lg" style="width: 100%;">Main Menu</button>
-  </form>      
+  </form>
 
 </div>
 </center>

@@ -3834,7 +3834,6 @@ bool Xdrv01(uint32_t function)
 #include "./ais_html/AIS_Z2M.h"
 #include "./ais_html/AIS_HEAD.h"
 #include "./ais_html/AIS_END.h"
-#include "./ais_html/AIS_STYLE.h"
 #include "./ais_html/AIS_UPGRADE.h"
 #include "./ais_html/AIS_UPGRADE_32.h"
 
@@ -3899,7 +3898,6 @@ void HandleAisInfo(void) {
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P("<style>.container-fluid {padding: 60px 50px;} .bg-grey {background-color: #f6f6f6;}.logo {font-size: 200px;}");
   WSContentSend_P("@media screen and (max-width: 768px) {.col-sm-4 {text-align: center;margin: 25px 0;}</style>");
-  WSContentSend_P(AIS_STYLE);
   WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
                   ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
   WSContentSend_P(AIS_END);
@@ -3924,7 +3922,6 @@ void HandleAisMqtt(void) {
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P("<script>var x=null,lt,to,tp,pc='';eb=s=>document.getElementById(s);qs=s=>document.querySelector(s);sp=i=>eb(i).type=(eb(i).type==='text'?'password':'text');wl=f=>window.addEventListener('load',f);function jd(){var t=0,i=document.querySelectorAll('input,button,textarea,select');while(i.length>=t){if(i[t]){i[t]['name']=(i[t].hasAttribute('id')&&(!i[t].hasAttribute('name')))?i[t]['id']:i[t]['name'];}t++;}}function sf(s){var t=0,i=document.querySelectorAll('.hf');while(i.length>=t){if(i[t]){i[t].style.display=s?'block':'none';}t++;}}wl(jd);</script>");
-  WSContentSend_P(AIS_STYLE);
 
   WSContentSend_P(AIS_MQTT,
                 SettingsText(SET_MQTT_HOST),
@@ -3948,7 +3945,6 @@ void HandleAisHomeAssistant(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_STYLE);
   WSContentSend_P(AIS_HA, "192.168.0.1");
   WSContentSend_P(AIS_END);
 
@@ -3963,7 +3959,6 @@ void HandleAisZigbee2Mqtt(void) {
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_STYLE);
   WSContentSend_P(AIS_Z2M, "192.168.0.1");
   WSContentSend_P(AIS_END);
 
@@ -3977,7 +3972,6 @@ void HandleAisUpgrade(void){
   Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_STYLE);
 
 #ifdef ESP32
   if (EspSingleOtaPartition() && !EspRunningFactoryPartition()) {

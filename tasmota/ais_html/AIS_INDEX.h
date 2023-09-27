@@ -1,5 +1,5 @@
 const char AIS_INDEX[] PROGMEM =
-  "<body style=\"margin-top:2em;background-color:#272727;\">"
+  "<body>"
   "<center>"
   "<div class=\"card\" style=\"width: 100%%;max-width: 600px;\">"
   "<img class=\"card-img-top\" src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais-smart-home.jpeg\" alt=\"Card image cap\">"

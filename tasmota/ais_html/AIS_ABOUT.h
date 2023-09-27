@@ -1,4 +1,7 @@
 const char AIS_ABOUT[] PROGMEM =
+"<body>"
+"<center>"
+"<div class=\"card\" style=\"width:100%%;max-width:600px;margin-top:2em;\">"
 "  <div class=\"container-fluid\">"
 "    <div class=\"row\">"
 "      <div class=\"col-sm-8 align-self-center\">"
@@ -19,7 +22,7 @@ const char AIS_ABOUT[] PROGMEM =
 "      <div class=\"col-sm-4 align-self-center\">"
 "        <span class=\"mdi mdi-memory\" style=\"font-size:7em;\"></span>"
 "      </div>"
-"      <div class=\"col-sm-8\">"
+"      <div class=\"col-sm-8\" style=\"text-align:left;\">"
 "        <h2><strong></strong>AIS adapter</strong></h2>"
 "        <p><strong>Program Version:</strong> %s <br/>"
 "        <strong>Build Date & Time:</strong> %s<br/>"
@@ -29,4 +32,5 @@ const char AIS_ABOUT[] PROGMEM =
 "    </div>"
 "  </div>"
 "<button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%;\">Main Menu</button>"
+"</div>"
 ;
