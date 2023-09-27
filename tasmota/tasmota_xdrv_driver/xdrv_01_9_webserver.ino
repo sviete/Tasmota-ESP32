@@ -751,7 +751,7 @@ void HttpHeaderCors(void)
 void WSHeaderSend(void)
 {
   char server[32];
-  snprintf_P(server, sizeof(server), PSTR("Tasmota/%s (%s)"), TasmotaGlobal.version, GetDeviceHardware().c_str());
+  snprintf_P(server, sizeof(server), PSTR("AIS/%s (%s)"), TasmotaGlobal.version, GetDeviceHardware().c_str());
   Webserver->sendHeader(F("Server"), server);
   Webserver->sendHeader(F("Cache-Control"), F("no-cache, no-store, must-revalidate"));
   Webserver->sendHeader(F("Pragma"), F("no-cache"));
@@ -3858,8 +3858,7 @@ void AisWebRestart(){
 }
 
 void ais_main(){
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentBegin(200, CT_HTML);
 
   float c = 32.4; 
   #ifdef ESP32
@@ -3877,9 +3876,7 @@ void ais_main(){
 
 
 void HandleAisConsole(void) {
-
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_CONSOLE);
@@ -3892,9 +3889,7 @@ void HandleAisConsole(void) {
 }
 
 void HandleAisInfo(void) {
-
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P("<style>.container-fluid {padding: 60px 50px;} .bg-grey {background-color: #f6f6f6;}.logo {font-size: 200px;}");
@@ -3918,8 +3913,7 @@ void HandleAisMqtt(void) {
     return;
   }
 
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P("<script>var x=null,lt,to,tp,pc='';eb=s=>document.getElementById(s);qs=s=>document.querySelector(s);sp=i=>eb(i).type=(eb(i).type==='text'?'password':'text');wl=f=>window.addEventListener('load',f);function jd(){var t=0,i=document.querySelectorAll('input,button,textarea,select');while(i.length>=t){if(i[t]){i[t]['name']=(i[t].hasAttribute('id')&&(!i[t].hasAttribute('name')))?i[t]['id']:i[t]['name'];}t++;}}function sf(s){var t=0,i=document.querySelectorAll('.hf');while(i.length>=t){if(i[t]){i[t].style.display=s?'block':'none';}t++;}}wl(jd);</script>");
@@ -3942,8 +3936,7 @@ void HandleAisMqtt(void) {
 
 void HandleAisHomeAssistant(void) {
 
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_HA, "192.168.0.1");
@@ -3956,8 +3949,7 @@ void HandleAisHomeAssistant(void) {
 
 void HandleAisZigbee2Mqtt(void) {
 
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
   WSContentSend_P(AIS_Z2M, "192.168.0.1");
@@ -3969,8 +3961,7 @@ void HandleAisZigbee2Mqtt(void) {
 }
 
 void HandleAisUpgrade(void){
-  Webserver->client().flush();
-  Webserver->setContentLength(CONTENT_LENGTH_UNKNOWN);
+  WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
 
