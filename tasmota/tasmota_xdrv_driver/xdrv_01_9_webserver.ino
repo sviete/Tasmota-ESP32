@@ -3866,7 +3866,7 @@ void ais_main(){
   #endif  // ESP32
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_INDEX, TasmotaGlobal.version, TasmotaGlobal.version);
+  WSContentSend_P(AIS_INDEX, "48.7", TasmotaGlobal.version);
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
