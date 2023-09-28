@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<style>a {color:black;text-decoration:none;}</style>
+<style>a {color:white;text-decoration:none;}</style>
 <title>AIS Zigbee, Matter, BLE</title>
 <body style="margin-top:2em;background-color:#272727;">
 <center>
 <div class="card" style="width: 100%;max-width: 600px;">
 <img class="card-img-top" src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais-smart-home.jpeg" alt="Card image cap">
 <div class="card-img-overlay">
-<h5 class="card-title" style="text-align:left;color:black"><span class="mdi mdi-thermometer"></span> %s °C</h5>
+<h5 class="card-title" style="text-align:left;color:white"><span class="mdi mdi-thermometer"></span> %s °C</h5>
 </div>
 
 <div class="card-body" style="padding-top:2em; background-color: #232732;">
@@ -30,8 +30,8 @@
 
 <div class="col">
 <div class="card" style="background-color: #486397;">
-<a href="ais_zigbee.html" style="">
-<span class="mdi mdi-zigbee"style="font-size: 4em;color:#EC0B43"></span>
+<a href="ais_zigbee.html">
+<img src="https://www.zigbee2mqtt.io/logo.png" style="width: 4em; margin: 1em;"></img>
 <h5 class="card-title">Zigbee2Mqtt</h5>
 </a>
 </div>
@@ -49,7 +49,7 @@
 <div class="col">
 <div class="card" style="background-color: #637faf;">
 <a href="ais_mqtt.html">
-<span class="mdi mdi-message-text-outline" style="font-size: 4em;color:#ff9800"></span>
+<img src="https://raw.githubusercontent.com/github/explore/6afe2c43768e7ef1e252839a1f1c12b730faa007/topics/mqtt/mqtt.png" style="width: 4em; margin: 1em;"></img>
 <h5 class="card-title">MQTT</h5>
 </a>
 </div>
@@ -58,7 +58,7 @@
 <div class="col">
 <div class="card" style="background-color: #7b88b1;">
 <a href="ais_update.html">
-<span class="mdi mdi-update" style="font-size: 4em;color:#5b0566""></span>
+<span class="mdi mdi-update" style="font-size: 4em;color:#300a36""></span>
 <h5 class="card-title">Update</h5>
 </a>
 </div>
@@ -72,13 +72,23 @@
 </a>
 </div>
 </div>
+
+<div class="col">
+    <div class="card" style="background-color: #97a5d6;">
+    <a href="ais_about.html">
+    <span class="mdi mdi-information-outline" style="font-size: 4em;color:#000000"></span>
+    <h5 class="card-title">About</h5>
+    </a>
+</div>
+</div>
+
 </div>
 </div>
 
 <div style="text-align: right; padding-right: 2em; z-index: 999999; background-color: #232732;">
 <a href="ais_about.html">
     <span class="mdi mdi-memory" style="font-size: 2em;"></span> 
-    <span style="line-height: 2em; vertical-align: super;">AIS version %s <a href="cn?" style="color: black;text-decoration: none;">&nbsp;&nbsp;.</a></span>
+    <span style="line-height: 2em; vertical-align: super;">version %s <a href="cn?" style="color: black;text-decoration: none;">&nbsp;&nbsp;.</a></span>
 </a>
 </div>
 
