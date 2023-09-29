@@ -3860,13 +3860,15 @@ void AisWebRestart(){
 void ais_main(){
   WSContentBegin(200, CT_HTML);
 
-  float c = 32.4; 
+  float c = 48.8; 
   #ifdef ESP32
     c = CpuTemperature();
   #endif  // ESP32
+  char str[20];
+  sprintf(str, "%.2f", c);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_INDEX, "48.7", TasmotaGlobal.version);
+  WSContentSend_P(AIS_INDEX, str, TasmotaGlobal.version);
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
@@ -3935,11 +3937,14 @@ void HandleAisMqtt(void) {
 }
 
 void HandleAisHomeAssistant(void) {
-
+  String ip= "192.168.4.1";
+  if (EthernetHasIP()){
+    ip = EthernetLocalIP().toString();
+  }
   WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_HA, "192.168.0.1");
+  WSContentSend_P(AIS_HA, ip.c_str());
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";
@@ -3948,11 +3953,15 @@ void HandleAisHomeAssistant(void) {
 }
 
 void HandleAisZigbee2Mqtt(void) {
+  String ip = "192.168.4.1";
+  if (EthernetHasIP()){
+    ip = EthernetLocalIP().toString();
+  }
 
   WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_Z2M, "192.168.0.1");
+  WSContentSend_P(AIS_Z2M, ip.c_str());
   WSContentSend_P(AIS_END);
 
   Web.chunk_buffer = "";

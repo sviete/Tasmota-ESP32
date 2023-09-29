@@ -13,14 +13,14 @@
 <div class="card" style="width: 100%;max-width: 600px;">
 <img class="card-img-top" src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais-smart-home.jpeg" alt="AIS smart home">
 <div class="card-img-overlay">
-<h5 class="card-title" style="text-align:left;color:white"><span class="mdi mdi-thermometer"></span> %s °C</h5>
+<h5 class="card-title" style="text-align:left;color:white"><span class="mdi mdi-thermometer"><span class="mdi mdi-memory"></span> %s °C</h5>
 </div>
 
 <div class="card-body" style="padding-top:2em; background-color: #232732;">
 <div class="row row-cols-2 row-cols-md-2 g-4">
 
 <div class="col">
-<div class="card" style="background-color: #486397;">
+<div class="card" style="background-color: #486397;min-height: 9.5em;">
 <a href="ais_home_assistant.html" >
 <img src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ha_logo.png" style="width: 4em; margin: 1em;"></img>
 <h5 class="card-title">Home Assistant</h5>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="col">
-<div class="card" style="background-color: #486397;">
+<div class="card" style="background-color: #486397;min-height: 9.5em;">
 <a href="ais_zigbee.html">
 <img src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/z2m_logo.png" style="width: 4em; margin: 1em;"></img>
 <h5 class="card-title">Zigbee2Mqtt</h5>
@@ -38,16 +38,16 @@
 </div>
 
 <div class="col">
-<div class="card" style="background-color: #637faf;">
+<div class="card" style="background-color: #637faf;min-height: 9.5em;">
 <a href="ais_bluetooth.html">
-<img src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ble_logo.png" style="width: 4em; margin: 1em;"></img>
+<span class="mdi mdi-bluetooth" style="font-size: 4em;color:#3f51b5"></span>
 <h5 class="card-title">Bluetooth</h5>
 </a>
 </div>
 </div>
 
 <div class="col">
-<div class="card" style="background-color: #637faf;">
+<div class="card" style="background-color: #637faf;min-height: 9.5em;">
 <a href="ais_mqtt.html">
 <img src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/mqtt_logo.png" style="width: 4em; margin: 1em;"></img>
 <h5 class="card-title">MQTT</h5>
@@ -56,7 +56,7 @@
 </div>
 
 <div class="col">
-<div class="card" style="background-color: #7b88b1;">
+<div class="card" style="background-color: #7b88b1;min-height: 9.5em;">
 <a href="ais_update.html">
 <span class="mdi mdi-update" style="font-size: 4em;color:#61136d""></span>
 <h5 class="card-title">Update</h5>
@@ -65,7 +65,7 @@
 </div>
 
 <div class="col">
-<div class="card" style="background-color: #7b88b1;">
+<div class="card" style="background-color: #7b88b1;min-height: 9.5em;">
 <a href="ais_console.html">
 <img src="https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/terminal_logo.png" style="width: 4em; margin: 1em;"></img>
 <h5 class="card-title">Terminal</h5>
@@ -74,7 +74,7 @@
 </div>
 
 <div class="col">
-<div class="card" style="background-color: #97a5d6;">
+<div class="card" style="background-color: #97a5d6;min-height: 9.5em;">
 <a href="ais_about.html">
 <span class="mdi mdi-information-outline" style="font-size: 4em;color:#000000"></span>
 <h5 class="card-title">About</h5>
@@ -86,10 +86,8 @@
 </div>
 
 <div style="text-align: right; padding-right: 2em; z-index: 999999; background-color: #232732;">
-<a href="ais_about.html">
-    <span class="mdi mdi-memory" style="font-size: 2em;"></span> 
-    <span style="line-height: 2em; vertical-align: super;">version %s <a href="cn?" style="color: black;text-decoration: none;">&nbsp;&nbsp;.</a></span>
-</a>
+<span class="mdi mdi-memory" style="font-size: 2em;"></span> 
+<span style="line-height: 2em; vertical-align: super;color:white;">version %s <a href="cn?" style="color: black;text-decoration: none;">&nbsp;&nbsp;.</a></span>
 </div>
 
 </center>

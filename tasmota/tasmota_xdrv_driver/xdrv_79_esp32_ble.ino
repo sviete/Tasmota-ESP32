@@ -3563,6 +3563,8 @@ void HandleBleConfiguration(void)
 
 // AIS START 
 #include "./ais_html/AIS_BT.h"
+#include "./ais_html/AIS_END_BT.h"
+
 void HandleAisBleConfiguration(void) {
 
   AddLog(LOG_LEVEL_INFO, PSTR("BLE: HandleBleConfiguration"));
@@ -3616,9 +3618,7 @@ void HandleAisBleConfiguration(void) {
       WSContentSend_P(HTTP_BLE_DEV_END);
     }
   }
-  WSContentSend_P("<button onclick=\"window.location.href='/'\" type=\"button\" class=\"btn btn-primary btn-lg\" style=\"width: 100%%;\">Main Menu</button></form>");
-  WSContentSend_P(AIS_END);
-  WSContentSend_P("");
+  WSContentSend_P(AIS_END_BT);
 
   Web.chunk_buffer = "";
   Webserver->sendContent("", 0);
