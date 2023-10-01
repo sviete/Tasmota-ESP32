@@ -29,7 +29,7 @@ const char AIS_INDEX[] PROGMEM =
   "<div class=\"col\">"
   "<div class=\"card\" style=\"background-color:#637faf;min-height: 9.5em;\">"
   "<a href=\"abl?\">"
-  "<span class=\"mdi mdi-bluetooth\" style=\"font-size: 4em;color:#3f51b5;\"></span>"
+  "<img src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ble_logo.png\" style=\"width: 4em; margin: 1em;\"></img>"
   "<h5 class=\"card-title\">Bluetooth</h5>"
   "</a>"
   "</div>"
