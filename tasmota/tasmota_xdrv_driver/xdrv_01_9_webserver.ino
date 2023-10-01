@@ -3871,9 +3871,7 @@ void ais_main(){
   WSContentSend_P(AIS_INDEX, str, TasmotaGlobal.version);
   WSContentSend_P(AIS_END);
 
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 }
 
 
@@ -3884,9 +3882,7 @@ void HandleAisConsole(void) {
   WSContentSend_P(AIS_CONSOLE);
   WSContentSend_P(AIS_END);
 
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 
 }
 
@@ -3900,9 +3896,7 @@ void HandleAisInfo(void) {
                   ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
   WSContentSend_P(AIS_END);
 
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 
 }
 
@@ -3931,9 +3925,7 @@ void HandleAisMqtt(void) {
 
   WSContentSend_P(AIS_END);
 
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 }
 
 void HandleAisHomeAssistant(void) {
@@ -3947,9 +3939,7 @@ void HandleAisHomeAssistant(void) {
   WSContentSend_P(AIS_HA, ip.c_str());
   WSContentSend_P(AIS_END);
 
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 }
 
 void HandleAisZigbee2Mqtt(void) {
@@ -3964,9 +3954,7 @@ void HandleAisZigbee2Mqtt(void) {
   WSContentSend_P(AIS_Z2M, ip.c_str());
   WSContentSend_P(AIS_END);
 
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 }
 
 void HandleAisUpgrade(void){
@@ -3986,9 +3974,7 @@ void HandleAisUpgrade(void){
 
   WSContentSend_P(AIS_END);
 
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 
   Web.upload_file_type = UPL_TASMOTA;
 }

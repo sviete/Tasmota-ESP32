@@ -28,7 +28,7 @@ const char AIS_INDEX[] PROGMEM =
   "</div>"
   "<div class=\"col\">"
   "<div class=\"card\" style=\"background-color:#637faf;min-height: 9.5em;\">"
-  "<a href=\"ble?\">"
+  "<a href=\"abl?\">"
   "<span class=\"mdi mdi-bluetooth\" style=\"font-size: 4em;color:#3f51b5;\"></span>"
   "<h5 class=\"card-title\">Bluetooth</h5>"
   "</a>"

@@ -5,7 +5,7 @@ const char AIS_BT[] PROGMEM =
 "<div class=\"card\" style=\"width: 100%;max-width: 600px;margin-top: 2em;\">"
 "  <h2 style=\"margin-top: 1em;'\">Bluetooth settings</h2>"
 "  <span class=\"mdi mdi-bluetooth-settings\" style=\"font-size: 7em; color:#3f51b5\"></span>"
-"  <form style=\"text-align: left;padding: 2em;\" method=\"get\" action=\"ble\">"
+"  <form style=\"text-align: left;padding: 2em;\" method=\"get\" action=\"abl\">"
 "    <div class=\"form-check form-switch\">"
 "      <input id=\"e0\" name=\"e0\" class=\"big-check-input form-check-input\" type=\"checkbox\" %s>"
 "      <label class=\"form-check-label\" for=\"e0\" style=\"line-height: 2.5em;\">&nbsp;Enable bloototh</label>"

@@ -3471,12 +3471,12 @@ const char HTTP_FORM_BLE[] PROGMEM =
 
 const char HTTP_BLE_DEV_STYLE[] PROGMEM = "th, td { padding-left:5px; }";
 const char HTTP_BLE_DEV_START[] PROGMEM =
-  "<fieldset><legend><b>&nbsp;" D_BLE_DEVICES "&nbsp;</b></legend><table class=\"table\">"
+  "<fieldset><legend><b>&nbsp;" D_BLE_DEVICES "&nbsp;</b></legend><div class=\"table-responsive\"><table class=\"table\">"
   "<tr><th><label>mac(type)</label></th><th><label>alias</label></th><th><label>name</label></th><th><label>RSSI</label></th><th><label>Age(max)</label></th></tr>";
 const char HTTP_BLE_DEV[] PROGMEM =
   "<tr><td><label>%s(%d)</label></td><td><label>%s</label></td><td><label>%s</label></td><td><label>%d</label></td><td><label>%d(%d)</label></td></tr>";
 const char HTTP_BLE_DEV_END[] PROGMEM =
-  "</table></fieldset>";
+  "</table></div></fieldset>";
 
 void HandleBleConfiguration(void)
 {
@@ -3619,10 +3619,7 @@ void HandleAisBleConfiguration(void) {
     }
   }
   WSContentSend_P(AIS_END_BT);
-
-  Web.chunk_buffer = "";
-  Webserver->sendContent("", 0);
-  Webserver->client().stop();
+  WSContentEnd();
 
 }
 // AIS STOP
@@ -3698,9 +3695,9 @@ bool Xdrv79(uint32_t function)
       WSContentSend_P(BLE_ESP32::HTTP_BTN_MENU_BLE);
       break;
     case FUNC_WEB_ADD_HANDLER:
+      WebServer_on(PSTR("/" WEB_HANDLE_BLE), BLE_ESP32::HandleBleConfiguration);
       // AIS
-      // WebServer_on(PSTR("/" WEB_HANDLE_BLE), BLE_ESP32::HandleBleConfiguration);
-      WebServer_on(PSTR("/" WEB_HANDLE_BLE), BLE_ESP32::HandleAisBleConfiguration);
+      WebServer_on(PSTR("/" "abl"), BLE_ESP32::HandleAisBleConfiguration);
       break;
 #endif  // USE_WEBSERVER
     }
