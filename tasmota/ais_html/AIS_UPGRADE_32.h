@@ -37,7 +37,7 @@ const char AIS_UPGRADE_32[] PROGMEM =
 "<body >"
 "<center>"  
 "  <div class=\"card\" style=\"width: 100%%;max-width: 600px;margin-top: 2em;\">"
-"  <h2 style=\"margin-top: 1em;\">Upgrade</h2>"
+"  <h2 style=\"margin-top: 1em; padding-bottom:1em;\">Upgrade</h2>"
 "  <div id=\"f2\" style=\"display:none;text-align:center;padding:50px;\"><div class=\"alert alert-success\" role=\"alert\">Upload started...</div></div>"
 "  <div id=\"f3\" style=\"display:none;text-align:center;padding:50px;\"><div class=\"alert alert-warning\" role=\"alert\">Switching to safeboot partition...</div></div>"
 "<span class=\"mdi mdi-update\" style=\"font-size: 7em; color:#5b0566\"></span>"

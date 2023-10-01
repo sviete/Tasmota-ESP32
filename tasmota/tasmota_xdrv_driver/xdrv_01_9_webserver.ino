@@ -3977,7 +3977,7 @@ void HandleAisZigbee2Mqtt(void) {
   WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P(AIS_Z2M, ip.c_str());
+  WSContentSend_P(AIS_Z2M, ip.c_str(), ip.c_str());
   WSContentSend_P(AIS_END);
 
   WSContentEnd();
