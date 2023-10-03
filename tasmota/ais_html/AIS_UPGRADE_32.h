@@ -40,7 +40,7 @@ const char AIS_UPGRADE_32[] PROGMEM =
 "  <h2 style=\"margin-top: 1em; padding-bottom:1em;\">Upgrade</h2>"
 "  <div id=\"f2\" style=\"display:none;text-align:center;padding:50px;\"><div class=\"alert alert-success\" role=\"alert\">Upload started...</div></div>"
 "  <div id=\"f3\" style=\"display:none;text-align:center;padding:50px;\"><div class=\"alert alert-warning\" role=\"alert\">Switching to safeboot partition...</div></div>"
-"<span class=\"mdi mdi-update\" style=\"font-size: 7em; color:#5b0566\"></span>"
+"  <center><img src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais_version.png\" style=\"width: 7em; margin: 1em;\"></img></center>"
 "  <form id=\"f1\" style=\"text-align: left;padding: 2em;\" method=\"post\" action=\"u2?fsz=\" enctype=\"multipart/form-data\">"
 "    <div>"
 "      <label for=\"formFileLg\" class=\"form-label\">Upload the upgrade file and click upgrade</label>"
