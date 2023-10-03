@@ -52,7 +52,16 @@ const char AIS_INDEX[] PROGMEM =
   "</div>"
 
   "<div class=\"col\">"
-  "<div class=\"card\" style=\"background-color:#7b88b1;min-height: 9.5em;\">"
+  "<div class=\"card\" style=\"background-color: #7b88b1;min-height: 9.5em;\">"
+  "<a href=\"ai?\">"
+  "<img src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais_info.png\" style=\"width: 4em; margin: 1em;\"></img>"
+  "<h5 class=\"card-title\">About</h5>"
+  "</a>"
+  "</div>"
+  "</div>"
+
+  "<div class=\"col\">"
+  "<div class=\"card\" style=\"background-color:#97a5d6;min-height: 9.5em;\">"
   "<a href=\"at?\">"
   "<img src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/terminal_logo.png\" style=\"width: 4em; margin: 1em;\"></img>"
   "<h5 class=\"card-title\">Terminal</h5>"
@@ -61,10 +70,10 @@ const char AIS_INDEX[] PROGMEM =
   "</div>"
 
   "<div class=\"col\">"
-  "<div class=\"card\" style=\"background-color: #97a5d6;min-height: 9.5em;\">"
-  "<a href=\"ai?\">"
-  "<img src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais_info.png\" style=\"width: 4em; margin: 1em;\"></img>"
-  "<h5 class=\"card-title\">About</h5>"
+  "<div class=\"card\" style=\"background-color:#97a5d6;min-height: 9.5em;\">"
+  "<a href=\"cn?\">"
+  "<img src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/tasmota_logo.png\" style=\"width: 4em; margin: 1em;\"></img>"
+  "<h5 class=\"card-title\">Tasmota</h5>"
   "</a>"
   "</div>"
   "</div>"
@@ -74,7 +83,7 @@ const char AIS_INDEX[] PROGMEM =
 
   "<div style=\"text-align: right; padding-right: 2em; z-index: 999999;background-color: #232732;\">"
   "<span class=\"mdi mdi-memory\" style=\"font-size: 2em;\"></span>" 
-  "<span style=\"line-height:2em;vertical-align:super;color:white;\">version %s <a href=\"cn?\" style=\"color:black;text-decoration:none;\">&nbsp;&nbsp;.</a></span>"
+  "<span style=\"line-height:2em;vertical-align:super;color:white;\">version %s</span>"
   "</div>"
   
 ;

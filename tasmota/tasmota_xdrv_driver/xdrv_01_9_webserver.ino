@@ -3916,8 +3916,7 @@ void HandleAisInfo(void) {
   WSContentBegin(200, CT_HTML);
 
   WSContentSend_P(AIS_HEAD);
-  WSContentSend_P("<style>.container-fluid {padding: 60px 50px;} .bg-grey {background-color: #f6f6f6;}.logo {font-size: 200px;}");
-  WSContentSend_P("@media screen and (max-width: 768px) {.col-sm-4 {text-align: center;margin: 25px 0;}</style>");
+  WSContentSend_P("<style>.container-fluid {padding: 30px 50px;} .logo {font-size: 200px;}</style>");
   WSContentSend_P(AIS_ABOUT, TasmotaGlobal.version , GetBuildDateAndTime().c_str(), 
                   ESP.getSdkVersion(), ESP_getChipId(), GetDeviceHardwareRevision().c_str());
   WSContentSend_P(AIS_END);
