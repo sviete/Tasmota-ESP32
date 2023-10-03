@@ -64,7 +64,7 @@ const char AIS_INDEX[] PROGMEM =
   "<div class=\"col\">"
   "<div class=\"card\" style=\"background-color: #97a5d6;min-height: 9.5em;\">"
   "<a href=\"ai?\">"
-  "<span class=\"mdi mdi-information-outline\" style=\"font-size: 4em;color:#000000\"></span>"
+  "<img src=\"https://raw.githubusercontent.com/sviete/Tasmota-ESP32/development/ais_files/ais_info.png\" style=\"width: 4em; margin: 1em;\"></img>"
   "<h5 class=\"card-title\">About</h5>"
   "</a>"
   "</div>"
