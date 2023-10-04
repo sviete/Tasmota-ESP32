@@ -21,7 +21,7 @@ const char AIS_Z2M[] PROGMEM =
 "serial:<br/>"
 "&nbsp;&nbsp;port: tcp://%s:8888<br/>"
 "&nbsp;&nbsp;baudrate: 115200<br/>"
-"&nbsp;&nbsp;adapter: zstack<br/>"
+"&nbsp;&nbsp;adapter: ezsp<br/>"
 "</code><br/><br/>"
 "      <a href=\"https://ai-speaker.com/docs/ais_zigbee_index\" class=\"card-link\"><span class=\"mdi mdi-web-box\"></span>Documentation</a>"
 "      <a href=\"https://github.com/sviete/Tasmota-ESP32\" class=\"card-link\"><span class=\"mdi mdi-github\"></span>Source code</a>"
